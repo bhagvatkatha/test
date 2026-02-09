@@ -82,7 +82,7 @@
     <section id="about">
         <div class="about-wrapper">
             <div class="about-img-container" data-aos="fade-right">
-                <!-- Cloudinary Image Link with Alignment Fix -->
+                <!-- Cloudinary Image Link -->
                 <img src="https://res.cloudinary.com/dc6h0eown/image/upload/v1770635258/WhatsApp_Image_2026-02-09_at_4.20.19_PM_iodq8k.jpg" 
                      alt="Shri Amit Krishna Shastri Ji" 
                      class="about-img" 
@@ -141,90 +141,89 @@
         </div>
     </section>
 
-<!-- YouTube Video Section (FIXED) -->
+    <!-- YouTube Video Section (UPDATED: 3 VIDEOS HORIZONTAL) -->
     <section id="videos">
         <div class="section-header" data-aos="fade-up">
             <span class="sub-heading">Watch Online</span>
             <h2>Latest Satsang</h2>
         </div>
         
-        <!-- Video Container -->
-        <div class="video-container" data-aos="zoom-in">
-            <iframe 
-                width="560" 
-                height="315" 
-                src="https://www.youtube.com/embed/7F_rEllKXl0?si=vozv9eZWxQDvWpFw" 
-                title="Shri Amit Krishna Shastri Ji Satsang" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                referrerpolicy="strict-origin-when-cross-origin" 
-                allowfullscreen>
-            </iframe>
+        <!-- Grid Container for 3 Videos -->
+        <div class="video-grid">
+            
+            <!-- VIDEO 1 -->
+            <div class="video-card" data-aos="zoom-in" data-aos-delay="100">
+                <iframe src="https://www.youtube.com/embed/7F_rEIlKXI0?rel=0" 
+                        title="Satsang Video 1" 
+                        allowfullscreen>
+                </iframe>
+            </div>
+
+            <!-- VIDEO 2 (Change the ID '7F_rEIlKXI0' to another video ID) -->
+            <div class="video-card" data-aos="zoom-in" data-aos-delay="200">
+                <iframe src="https://www.youtube.com/embed/7F_rEIlKXI0?rel=0" 
+                        title="Satsang Video 2" 
+                        allowfullscreen>
+                </iframe>
+            </div>
+
+            <!-- VIDEO 3 (Change the ID '7F_rEIlKXI0' to another video ID) -->
+            <div class="video-card" data-aos="zoom-in" data-aos-delay="300">
+                <iframe src="https://www.youtube.com/embed/7F_rEIlKXI0?rel=0" 
+                        title="Satsang Video 3" 
+                        allowfullscreen>
+                </iframe>
+            </div>
+
         </div>
 
         <div class="yt-btn-container" data-aos="fade-up">
-            <a href="https://www.youtube.com/channel/UC-YOUR-CHANNEL-ID" target="_blank" class="yt-btn">
+            <a href="https://www.youtube.com" target="_blank" class="yt-btn">
                 <i class="fab fa-youtube"></i> Visit YouTube Channel
             </a>
         </div>
     </section>
 
-    <!-- Gallery Section (EXPANDED TO 8 PHOTOS) -->
+    <!-- Gallery Section -->
     <section id="gallery" class="bg-light">
         <div class="section-header" data-aos="fade-up">
             <span class="sub-heading">Memories</span>
             <h2>Divine Glimpses</h2>
         </div>
         <div class="gallery-grid">
-            
-            <!-- PHOTO 1 -->
+            <!-- 8 Photos Grid -->
             <div class="gallery-item" data-aos="zoom-in" onclick="openLightbox(this)">
                 <img src="https://images.unsplash.com/photo-1605218427368-3619589d9e5e?q=80&w=600" alt="Katha">
                 <div class="gallery-overlay"><i class="fas fa-expand-alt"></i></div>
             </div>
-
-            <!-- PHOTO 2 -->
             <div class="gallery-item" data-aos="zoom-in" onclick="openLightbox(this)">
                 <img src="https://images.unsplash.com/photo-1598448106720-31658428236d?q=80&w=600" alt="Aarti">
                 <div class="gallery-overlay"><i class="fas fa-expand-alt"></i></div>
             </div>
-
-            <!-- PHOTO 3 -->
             <div class="gallery-item" data-aos="zoom-in" onclick="openLightbox(this)">
                 <img src="https://images.unsplash.com/photo-1572986423456-2e21332a7627?q=80&w=600" alt="Vrindavan">
                 <div class="gallery-overlay"><i class="fas fa-expand-alt"></i></div>
             </div>
-
-            <!-- PHOTO 4 -->
             <div class="gallery-item" data-aos="zoom-in" onclick="openLightbox(this)">
                 <img src="https://images.unsplash.com/photo-1561565251-872f2e519213?q=80&w=600" alt="Bhajan">
                 <div class="gallery-overlay"><i class="fas fa-expand-alt"></i></div>
             </div>
-
-            <!-- PHOTO 5 (New Slot) -->
             <div class="gallery-item" data-aos="zoom-in" onclick="openLightbox(this)">
                 <img src="https://images.unsplash.com/photo-1517424907954-52269a924b22?q=80&w=600" alt="Devotees">
                 <div class="gallery-overlay"><i class="fas fa-expand-alt"></i></div>
             </div>
-
-            <!-- PHOTO 6 (New Slot) -->
             <div class="gallery-item" data-aos="zoom-in" onclick="openLightbox(this)">
                 <img src="https://images.unsplash.com/photo-1610486519198-14227c8a3248?q=80&w=600" alt="Radha Krishna">
                 <div class="gallery-overlay"><i class="fas fa-expand-alt"></i></div>
             </div>
-
-            <!-- PHOTO 7 (New Slot) -->
             <div class="gallery-item" data-aos="zoom-in" onclick="openLightbox(this)">
                 <img src="https://images.unsplash.com/photo-1629814486668-5231c5750036?q=80&w=600" alt="Puja">
                 <div class="gallery-overlay"><i class="fas fa-expand-alt"></i></div>
             </div>
-
-            <!-- PHOTO 8 (New Slot) -->
             <div class="gallery-item" data-aos="zoom-in" onclick="openLightbox(this)">
                 <img src="https://images.unsplash.com/photo-1591206369811-4eeb2f04bc95?q=80&w=600" alt="Temple">
                 <div class="gallery-overlay"><i class="fas fa-expand-alt"></i></div>
             </div>
-
         </div>
     </section>
 
@@ -245,13 +244,11 @@
             <div class="contact-left">
                 <h3 class="hindi-font">संपर्क सूत्र</h3>
                 <p style="margin-bottom: 30px; opacity: 0.9;">For Katha organization, Satsang, or any spiritual guidance, please contact us.</p>
-                
                 <div class="info-item">
                     <i class="fas fa-phone-alt"></i>
                     <div>
                         <h4>Call Us</h4>
                         <p>+91 98765 43210</p>
-                        <p>+91 98765 43211</p>
                     </div>
                 </div>
                 <div class="info-item">
@@ -288,7 +285,6 @@
                             <option value="Ram Katha">Ram Katha</option>
                             <option value="Shiv Puran">Shiv Mahapuran</option>
                             <option value="Nani Bai Mayra">Nani Bai Ka Mayra</option>
-                            <option value="Other">Other</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -311,14 +307,11 @@
     <footer>
         <div class="footer-logo">Shri Amit Krishna Shastri Ji</div>
         <p>Spreading the divine wisdom of Sanatan Dharma.</p>
-        
         <div class="social-row">
             <a href="#" class="social-btn"><i class="fab fa-facebook-f"></i></a>
             <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
             <a href="#" class="social-btn"><i class="fab fa-youtube"></i></a>
-            <a href="#" class="social-btn"><i class="fab fa-twitter"></i></a>
         </div>
-        
         <p>&copy; 2024 Shri Amit Krishna Shastri Ji. All Rights Reserved.</p>
     </footer>
 
@@ -330,119 +323,73 @@
     <!-- SCRIPTS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // 1. Initialize Animations
-        AOS.init({
-            offset: 80,
-            duration: 800,
-            easing: 'ease-in-out',
-            once: true
-        });
+        AOS.init({ offset: 80, duration: 800, easing: 'ease-in-out', once: true });
 
-        // 2. Preloader
         function loaderOff() {
             const preloader = document.getElementById('preloader');
             preloader.style.opacity = '0';
-            setTimeout(() => {
-                preloader.style.display = 'none';
-            }, 500);
+            setTimeout(() => { preloader.style.display = 'none'; }, 500);
         }
 
-        // 3. Navbar Scroll Effect
         window.addEventListener('scroll', function() {
             const nav = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
-            }
+            if (window.scrollY > 50) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
         });
 
-        // 4. Mobile Menu Logic
         const navLinks = document.getElementById('navLinks');
         const hamburger = document.querySelector('.hamburger');
 
         function toggleMenu() {
             navLinks.classList.toggle('active');
-            hamburger.innerHTML = navLinks.classList.contains('active') 
-                ? '<i class="fas fa-times"></i>' 
-                : '<i class="fas fa-bars"></i>';
+            hamburger.innerHTML = navLinks.classList.contains('active') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
         }
-
         function closeMenu() {
             navLinks.classList.remove('active');
             hamburger.innerHTML = '<i class="fas fa-bars"></i>';
         }
 
-        // 5. WhatsApp Form Logic (WORKING)
         function sendToWhatsApp(e) {
             e.preventDefault();
-            
-            // Get values
             const name = document.getElementById("name").value.trim();
             const phone = document.getElementById("phone").value.trim();
             const type = document.getElementById("kathaType").value;
             const city = document.getElementById("city").value.trim();
             const msg = document.getElementById("message").value.trim();
             
-            // Validation
-            if(name === "" || phone === "" || city === "") {
-                alert("Please fill in all required fields.");
-                return;
-            }
+            if(name === "" || phone === "" || city === "") { alert("Please fill in all required fields."); return; }
 
-            // Create WhatsApp Link
-            // Replace 919876543210 with the REAL phone number (no + sign)
             const phoneNumber = "919876543210"; 
-            
-            const text = `*New Katha Enquiry from Website* %0a%0a` +
-                         `*Name:* ${name}%0a` +
-                         `*Phone:* ${phone}%0a` +
-                         `*Type:* ${type}%0a` +
-                         `*City:* ${city}%0a` +
-                         `*Message:* ${msg}`;
-
-            const url = `https://wa.me/${phoneNumber}?text=${text}`;
-            
-            // Open in new tab
-            window.open(url, '_blank');
+            const text = `*New Katha Enquiry* %0a%0a*Name:* ${name}%0a*Phone:* ${phone}%0a*Type:* ${type}%0a*City:* ${city}%0a*Message:* ${msg}`;
+            window.open(`https://wa.me/${phoneNumber}?text=${text}`, '_blank');
         }
 
-        // 6. Number Counter Animation
         const counters = document.querySelectorAll('.stat-number');
         counters.forEach(counter => {
             const updateCount = () => {
                 const target = +counter.getAttribute('data-target');
                 const count = +counter.innerText;
-                const inc = target / 100; // Speed
-
+                const inc = target / 100;
                 if (count < target) {
                     counter.innerText = Math.ceil(count + inc);
                     setTimeout(updateCount, 25);
-                } else {
-                    counter.innerText = target + "+";
-                }
+                } else { counter.innerText = target + "+"; }
             };
-            
-            let observer = new IntersectionObserver((entries) => {
-                if(entries[0].isIntersecting) updateCount();
-            });
+            let observer = new IntersectionObserver((entries) => { if(entries[0].isIntersecting) updateCount(); });
             observer.observe(counter);
         });
 
-        // 7. Lightbox Logic (WORKING)
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
-
         function openLightbox(element) {
             const imgUrl = element.querySelector('img').src;
             lightboxImg.src = imgUrl;
             lightbox.style.display = 'flex';
-            document.body.style.overflow = 'hidden'; // Disable scroll
+            document.body.style.overflow = 'hidden';
         }
-
         function closeLightbox() {
             lightbox.style.display = 'none';
-            document.body.style.overflow = 'auto'; // Enable scroll
+            document.body.style.overflow = 'auto';
         }
     </script>
 </body>
