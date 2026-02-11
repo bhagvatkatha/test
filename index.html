@@ -3,225 +3,425 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shri Amit Krishna Shastri Ji | Bhagvat Katha Vyas</title>
+    <title>Shri Amit Krishna Shastri Ji | Bhagvat Katha Vyas Official</title>
     <meta name="description" content="Official website of Param Pujya Shri Amit Krishna Shastri Ji - Renowned narrator of Shrimad Bhagwat Katha, Ram Katha, and Shiv Mahapuran.">
-    <link rel="stylesheet" href="style.css">
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;500;600&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet">
+    
+    <!-- Icons & Animations -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        /* --- 1. THEME & VARIABLES --- */
+        :root {
+            --primary: #FF7043;      /* Sacred Saffron */
+            --primary-dark: #BF360C; 
+            --gold: #D4AF37;         /* Royal Gold */
+            --gold-light: #F9F1DC;
+            --deep-maroon: #5D0E0E;
+            --text-dark: #1a1a1a;
+            --text-gray: #555;
+            --bg-cream: #FFFAF0;     
+            --white: #ffffff;
+            --shadow: 0 15px 35px rgba(0,0,0,0.1);
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-cream);
+            color: var(--text-dark);
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+
+        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--deep-maroon); }
+        .hindi-font { font-family: 'Tiro Devanagari Hindi', serif; }
+        .script-font { font-family: 'Great Vibes', cursive; color: var(--gold); }
+        .sub-heading { color: var(--primary); letter-spacing: 2px; text-transform: uppercase; font-size: 0.85rem; font-weight: 700; display: block; margin-bottom: 10px; }
+
+        /* --- 2. PRELOADER --- */
+        #preloader {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--deep-maroon); z-index: 9999;
+            display: flex; justify-content: center; align-items: center; flex-direction: column;
+        }
+        .loader-om { font-size: 5rem; color: var(--gold); animation: pulse 2s infinite; }
+
+        /* --- 3. NAVIGATION --- */
+        nav {
+            position: fixed; width: 100%; top: 0; z-index: 1000;
+            padding: 25px 5%; display: flex; justify-content: space-between; align-items: center;
+            transition: var(--transition); background: transparent;
+        }
+        nav.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            padding: 15px 5%; box-shadow: 0 5px 30px rgba(0,0,0,0.1);
+        }
+        .logo { text-decoration: none; display: flex; align-items: center; gap: 12px; }
+        .logo-text { color: var(--deep-maroon); font-weight: 900; line-height: 1; }
+        .logo-text span { display: block; font-size: 0.7rem; color: var(--primary); letter-spacing: 2px; }
+
+        .nav-links { display: flex; gap: 30px; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--text-dark); font-weight: 600; font-size: 0.9rem; transition: 0.3s; text-transform: uppercase; }
+        .nav-links a:hover { color: var(--primary); }
+
+        .btn-gold {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white !important; padding: 12px 30px; border-radius: 50px;
+            font-weight: 700; box-shadow: 0 10px 20px rgba(255, 112, 67, 0.3);
+            transition: var(--transition); border: none; cursor: pointer; text-decoration: none;
+        }
+        .btn-gold:hover { transform: translateY(-3px); box-shadow: 0 15px 25px rgba(255, 112, 67, 0.5); }
+
+        /* --- 4. HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://res.cloudinary.com/dc6h0eown/image/upload/v1770635258/WhatsApp_Image_2026-02-09_at_4.20.19_PM_iodq8k.jpg');
+            background-size: cover; background-position: top center; background-attachment: fixed;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; color: white; padding: 0 20px;
+        }
+        .hero h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); color: white; text-shadow: 0 4px 15px rgba(0,0,0,0.4); margin: 15px 0; }
+        .hero p { font-size: 1.3rem; max-width: 800px; margin-bottom: 30px; opacity: 0.9; }
+
+        /* --- 5. STATS COUNTER --- */
+        .stats-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px; max-width: 1100px; margin: -80px auto 0; position: relative; z-index: 10;
+            background: white; padding: 40px; border-radius: 20px; box-shadow: var(--shadow);
+        }
+        .stat-item { text-align: center; border-right: 1px solid #eee; }
+        .stat-item:last-child { border: none; }
+        .stat-val { font-size: 2.8rem; font-weight: 900; color: var(--primary); display: block; line-height: 1; margin-bottom: 5px; }
+        .stat-lbl { color: var(--text-gray); font-size: 0.85rem; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; }
+
+        /* --- 6. PHILOSOPHY & ABOUT --- */
+        section { padding: 100px 5%; position: relative; }
+        .philosophy { background: var(--gold-light); overflow: hidden; text-align: center; }
+        .mandala-bg { background-image: url('https://www.transparenttextures.com/patterns/mandala.png'); opacity: 0.05; position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+        .quote-text { font-size: 1.8rem; font-family: 'Playfair Display', serif; font-style: italic; color: var(--deep-maroon); max-width: 900px; margin: 0 auto; z-index: 2; position: relative; }
+
+        .about-wrapper { display: flex; flex-wrap: wrap; gap: 60px; align-items: center; max-width: 1200px; margin: 0 auto; }
+        .about-img-container { flex: 1; min-width: 320px; position: relative; }
+        .about-img { width: 100%; border-radius: 30px; box-shadow: 20px 20px 0 var(--gold); height: 500px; object-fit: cover; }
+
+        /* --- 7. KATHA SERVICES --- */
+        .bg-white { background: white; }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
+        .service-card {
+            background: var(--bg-cream); padding: 40px 30px; border-radius: 20px; text-align: center;
+            transition: var(--transition); border-bottom: 5px solid var(--gold);
+        }
+        .service-card:hover { transform: translateY(-10px); box-shadow: var(--shadow); }
+        .icon-box { width: 80px; height: 80px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 25px; color: var(--primary); font-size: 2rem; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+
+        /* --- 8. VIDEO GRID (3 Per Row) --- */
+        .video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1200px; margin: 40px auto; }
+        .video-container { position: relative; padding-bottom: 56.25%; height: 0; border-radius: 15px; overflow: hidden; box-shadow: var(--shadow); background: #000; }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+
+        /* --- 9. PHOTO GALLERY (4 Per Row) --- */
+        .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; max-width: 1200px; margin: 0 auto; }
+        .gallery-item { position: relative; height: 280px; border-radius: 12px; overflow: hidden; cursor: pointer; box-shadow: var(--shadow); }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+        .gallery-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(93, 14, 14, 0.7); display: flex; align-items: center; justify-content: center; opacity: 0; transition: 0.3s; }
+        .gallery-overlay i { color: var(--gold); font-size: 2rem; }
+        .gallery-item:hover img { transform: scale(1.1); }
+        .gallery-item:hover .gallery-overlay { opacity: 1; }
+
+        /* --- 10. LIGHTBOX --- */
+        #lightbox { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 10000; display: none; align-items: center; justify-content: center; padding: 20px; }
+        #lightbox img { max-width: 90%; max-height: 80vh; border-radius: 10px; border: 3px solid var(--gold); }
+        .close-lightbox { position: absolute; top: 30px; right: 40px; color: white; font-size: 3rem; cursor: pointer; }
+
+        /* --- 11. CONTACT & FOOTER --- */
+        .contact-container {
+            display: flex; flex-wrap: wrap; max-width: 1150px; margin: 0 auto;
+            background: white; border-radius: 30px; overflow: hidden; box-shadow: var(--shadow);
+        }
+        .contact-info { flex: 1; background: var(--deep-maroon); color: white; padding: 60px 40px; min-width: 320px; }
+        .contact-form { flex: 1.5; padding: 60px 40px; min-width: 320px; }
+        .form-input { width: 100%; padding: 15px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 10px; font-family: inherit; }
+
+        footer { background: #0a0a0a; color: #777; padding: 80px 5% 30px; text-align: center; }
+        .footer-logo { font-size: 2rem; color: white; margin-bottom: 20px; display: block; text-decoration: none; }
+        .wa-float { position: fixed; bottom: 30px; right: 30px; background: #25D366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 999; box-shadow: 0 10px 20px rgba(0,0,0,0.2); text-decoration: none; }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 1024px) {
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+            .video-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .video-grid, .gallery-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.5rem; }
+            .stat-item { border: none; margin-bottom: 20px; }
+            .stats-grid { grid-template-columns: 1fr 1fr; margin-top: -40px; }
+        }
+
+        @keyframes pulse { 0% { opacity: 0.5; transform: scale(0.9); } 50% { opacity: 1; transform: scale(1.1); } 100% { opacity: 0.5; transform: scale(0.9); } }
+    </style>
 </head>
 <body onload="loaderOff()">
 
+    <!-- Preloader -->
     <div id="preloader">
-        <div class="spinner"></div>
-        <div class="loader-text script-font" style="color:var(--text-dark)">Jai Shri Krishna</div>
+        <div class="loader-om"><i class="fas fa-om"></i></div>
+        <div class="script-font" style="font-size: 2rem; margin-top: 20px;">Jai Shri Krishna...</div>
     </div>
 
+    <!-- Navbar -->
     <nav id="navbar">
         <a href="#" class="logo">
-            <i class="fas fa-om"></i> 
-            <div>Amit Krishna<span style="display:block; font-size:0.7rem; color:var(--primary); font-weight:600; letter-spacing: 1px;">SHASTRI JI</span></div>
+            <i class="fas fa-om" style="font-size: 2.2rem; color: var(--primary);"></i>
+            <div class="logo-text">AMIT KRISHNA <span class="hindi-font">शास्त्री जी</span></div>
         </a>
-        <div class="hamburger" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
-        <div class="nav-links" id="navLinks">
-            <a href="#home" onclick="closeMenu()">Home</a>
-            <a href="#about" onclick="closeMenu()">About</a>
-            <a href="#services" onclick="closeMenu()">Katha</a>
-            <a href="#videos" onclick="closeMenu()">Satsang</a>
-            <a href="#gallery" onclick="closeMenu()">Gallery</a>
-            <a href="#contact" class="btn-gold" onclick="closeMenu()">Book Katha</a>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#kathas">Kathas</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#videos">Satsang</a>
+            <a href="#contact" class="btn-gold">Book Katha</a>
         </div>
     </nav>
 
-    <header id="home" class="hero">
-        <div class="hero-subtitle script-font" data-aos="fade-down" data-aos-duration="1000">|| Jai Shri Radhe ||</div>
-        <h1 class="hindi-font" data-aos="zoom-in" data-aos-duration="1200">परम पूज्य श्री अमित कृष्ण शास्त्री जी</h1>
-        <p data-aos="fade-up" data-aos-delay="300">Awakening spirituality through the divine nectar of Shrimad Bhagwat Katha</p>
-        <div data-aos="fade-up" data-aos-delay="500"><a href="#contact" class="btn-gold">Inviting for Katha</a></div>
-        <a href="#about" class="scroll-down"><i class="fas fa-chevron-down"></i></a>
+    <!-- Hero Section -->
+    <header class="hero" id="home">
+        <div class="script-font" style="font-size: 2.5rem;" data-aos="fade-down">|| Jai Shri Radhe ||</div>
+        <h1 class="hindi-font" data-aos="zoom-in" data-aos-delay="200">परम पूज्य श्री अमित कृष्ण शास्त्री जी</h1>
+        <p data-aos="fade-up" data-aos-delay="400">Awakening the soul through the divine nectar of Shrimad Bhagwat Katha and Vedic wisdom from the holy land of Vrindavan.</p>
+        <div data-aos="fade-up" data-aos-delay="600">
+            <a href="#contact" class="btn-gold">Organize a Katha</a>
+            <a href="#videos" class="btn-gold" style="background: transparent; border: 2px solid white; margin-left: 15px;">Watch Live</a>
+        </div>
     </header>
 
-    <div class="stats-section" data-aos="fade-up">
-        <div class="stat-box"><span class="stat-number" data-target="15">0</span><span class="stat-label">Years of Seva</span></div>
-        <div class="stat-box"><span class="stat-number" data-target="500">0</span><span class="stat-label">Kathas Completed</span></div>
-        <div class="stat-box"><span class="stat-number" data-target="20000">0</span><span class="stat-label">Devotees Connected</span></div>
+    <!-- Stats Section -->
+    <div class="stats-grid" data-aos="fade-up">
+        <div class="stat-item"><span class="stat-val" data-target="15">0</span><span class="stat-lbl">Years of Seva</span></div>
+        <div class="stat-item"><span class="stat-val" data-target="550">0</span><span class="stat-lbl">Kathas Completed</span></div>
+        <div class="stat-item"><span class="stat-val" data-target="120">0</span><span class="stat-lbl">Cities Visited</span></div>
+        <div class="stat-item"><span class="stat-val" data-target="25000">0</span><span class="stat-lbl">Devotees Connected</span></div>
     </div>
 
+    <!-- About Section -->
     <section id="about">
         <div class="about-wrapper">
             <div class="about-img-container" data-aos="fade-right">
-                <img src="https://res.cloudinary.com/dc6h0eown/image/upload/v1770635258/WhatsApp_Image_2026-02-09_at_4.20.19_PM_iodq8k.jpg" alt="Shri Amit Krishna Shastri Ji" class="about-img" style="object-position: top center;"> 
-            </div>
-            <div class="about-content" data-aos="fade-left">
-                <span class="sub-heading">About Maharaj Ji</span>
-                <h2 class="hindi-font" style="margin-bottom: 20px;">धर्म और आध्यात्म की एक दिव्य आवाज</h2>
-                <p class="about-text hindi-font">
-                    परम पूज्य <strong>श्री अमित कृष्ण शास्त्री जी</strong> श्रीधाम वृंदावन की पावन भूमि से एक प्रख्यात <strong>श्रीमद्भागवत कथा व्यास</strong> हैं। आपकी वाणी में माँ सरस्वती और भगवान श्री कृष्ण की असीम कृपा है। अत्यंत सरल और भावपूर्ण शैली में कथा वाचन श्रोताओं को भक्ति रस में सराबोर कर देता है।
-                </p>
-                <p class="about-text">With over 15 years of dedication to Sanatan Dharma, Maharaj Ji has traveled extensively to spread the message of Shrimad Bhagwat and Vedic wisdom.</p>
-                <div class="features-list">
-                    <div class="feature-item"><i class="fas fa-check-circle"></i> Bhagwat Katha Vyas</div>
-                    <div class="feature-item"><i class="fas fa-check-circle"></i> Spiritual Mentor</div>
-                    <div class="feature-item"><i class="fas fa-check-circle"></i> Motivational Speaker</div>
-                    <div class="feature-item"><i class="fas fa-check-circle"></i> Vedic Scholar</div>
+                <img src="https://res.cloudinary.com/dc6h0eown/image/upload/v1770635258/WhatsApp_Image_2026-02-09_at_4.20.19_PM_iodq8k.jpg" alt="Maharaj Ji" class="about-img">
+                <div style="position: absolute; bottom: -20px; right: -20px; background: var(--primary); color: white; padding: 20px; border-radius: 15px; text-align: center;">
+                    <span style="font-size: 1.8rem; font-weight: 900; display: block;">Vyas</span><span style="font-size: 0.7rem; text-transform: uppercase;">Gaddi Seva</span>
                 </div>
-                <br><a href="#contact" class="btn-gold" style="padding: 10px 25px; font-size: 0.9rem;">Know More</a>
+            </div>
+            <div class="about-content" data-aos="fade-left" style="flex: 1.2;">
+                <span class="sub-heading">About Maharaj Ji</span>
+                <h2 class="hindi-font" style="font-size: 2.8rem; margin-bottom: 20px;">धर्म और आध्यात्म की एक दिव्य आवाज</h2>
+                <p class="hindi-font" style="font-size: 1.1rem; margin-bottom: 20px; color: var(--text-gray);">
+                    परम पूज्य <strong>श्री अमित कृष्ण शास्त्री जी</strong> श्रीधाम वृंदावन के एक प्रख्यात कथा व्यास हैं। आपकी वाणी में साक्षात् माँ सरस्वती का वास है। आपने पिछले 15 वर्षों से निरंतर श्रीमद्भागवत कथा, श्रीराम कथा और शिव महापुराण के माध्यम से सनातन धर्म का प्रचार-प्रसार किया है।
+                </p>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; font-weight: 600;">
+                    <div><i class="fas fa-check-circle" style="color: var(--primary);"></i> Vedic Scholar</div>
+                    <div><i class="fas fa-check-circle" style="color: var(--primary);"></i> Bhagwat Specialist</div>
+                    <div><i class="fas fa-check-circle" style="color: var(--primary);"></i> Bhajan Singer</div>
+                    <div><i class="fas fa-check-circle" style="color: var(--primary);"></i> Spiritual Mentor</div>
+                </div>
+                <br><a href="#contact" class="btn-gold">Read Full Biography</a>
             </div>
         </div>
     </section>
 
-    <section id="services" class="bg-light">
-        <div class="section-header" data-aos="fade-up">
+    <!-- Philosophy -->
+    <section class="philosophy">
+        <div class="mandala-bg"></div>
+        <div class="quote-box" data-aos="zoom-in">
+            <i class="fas fa-quote-left" style="font-size: 3rem; color: var(--gold); opacity: 0.3; margin-bottom: 20px;"></i>
+            <p class="quote-text hindi-font">"कथा केवल सुनने के लिए नहीं, बल्कि जीवन में उतारने के लिए है। जब तक भगवान की कथा हमारे आचरण में नहीं आती, तब तक भक्ति का मार्ग पूर्ण नहीं होता।"</p>
+            <p style="margin-top: 25px; font-weight: 700; color: var(--primary);">— पूज्य महाराज जी</p>
+        </div>
+    </section>
+
+    <!-- Katha Services -->
+    <section id="kathas" class="bg-white">
+        <div style="text-align: center; margin-bottom: 60px;">
             <span class="sub-heading">Divine Offerings</span>
-            <h2>Our Katha Programs</h2>
+            <h2 class="hindi-font" style="font-size: 3rem;">प्रमुख कथा कार्यक्रम</h2>
         </div>
         <div class="services-grid">
-            <div class="service-card" data-aos="fade-up" data-aos-delay="100" style="border-bottom: 4px solid var(--primary);">
+            <div class="service-card" data-aos="fade-up">
                 <div class="icon-box"><i class="fas fa-book-open"></i></div>
                 <h3 class="hindi-font">श्रीमद्भागवत कथा</h3>
-                <p>A 7-day spiritual journey describing the avatars of Shri Krishna, accompanied by musical bhajans and divine tableaus (Jhanki).</p>
+                <p>Experience the 7-day divine journey into the pastimes of Shri Krishna with melodic bhajans and deep Vedic secrets.</p>
             </div>
-            <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-card" data-aos="fade-up" data-aos-delay="100">
                 <div class="icon-box"><i class="fas fa-om"></i></div>
                 <h3 class="hindi-font">शिव महापुराण</h3>
-                <p>Elaborate narration of Lord Shiva's glory, Jyotirlingas, and the essence of Shiv Tattva.</p>
+                <p>Explore the glory of Lord Mahadev, the science of creation, and the importance of Shiv-Tattva in our lives.</p>
             </div>
-            <div class="service-card" data-aos="fade-up" data-aos-delay="300">
-                <div class="icon-box"><i class="fas fa-church"></i></div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="icon-box"><i class="fas fa-heart"></i></div>
                 <h3 class="hindi-font">श्रीराम कथा</h3>
-                <p>Inspiring tales from the Ramayana, teaching the ideals of Dharma and Maryada Purushottam Ram.</p>
-            </div>
-            <div class="service-card" data-aos="fade-up" data-aos-delay="400">
-                <div class="icon-box"><i class="fas fa-music"></i></div>
-                <h3 class="hindi-font">नानी बाई का मायरा</h3>
-                <p>A 3-day musical program depicting the unconditional devotion of Narsinh Mehta.</p>
+                <p>A soul-stirring narration of Maryada Purushottam Shri Ram’s life, focusing on Dharma and family values.</p>
             </div>
         </div>
     </section>
 
-    <!-- VIDEO SECTION -->
-    <section id="videos">
-        <div class="section-header" data-aos="fade-up">
-            <span class="sub-heading">Watch Online</span>
-            <h2>Latest Satsang</h2>
-        </div>
-        <!-- 3 Videos in a Horizontal Row -->
-        <div class="video-grid">
-            <div class="video-card" data-aos="zoom-in" data-aos-delay="100">
-                <iframe src="https://www.youtube.com/embed/L3xyTHrrfjw?si=nYUuJvgySoI5GlFT" title="Satsang 1" allowfullscreen></iframe>
-            </div>
-            <div class="video-card" data-aos="zoom-in" data-aos-delay="200">
-                <iframe src="https://www.youtube.com/embed/8p9CAtRzwJk?si=mTkwdq1Lq-Jk2Atb" title="Satsang 2" allowfullscreen></iframe>
-            </div>
-            <div class="video-card" data-aos="zoom-in" data-aos-delay="300">
-                <iframe src="https://www.youtube.com/embed/R5eXSYfPeeM?si=Y-0lkKG-sxnFHtrG" title="Satsang 3" allowfullscreen></iframe>
-            </div>
-        </div>
-        <div class="yt-btn-container" data-aos="fade-up">
-            <a href="https://www.youtube.com" target="_blank" class="yt-btn"><i class="fab fa-youtube"></i> Visit YouTube Channel</a>
-        </div>
-    </section>
-
-    <section id="gallery" class="bg-light">
-        <div class="section-header" data-aos="fade-up">
-            <span class="sub-heading">Memories</span>
-            <h2>Divine Glimpses</h2>
+    <!-- Photo Gallery (8 Images, 4 Per Row) -->
+    <section id="gallery" style="background: var(--gold-light);">
+        <div style="text-align: center; margin-bottom: 50px;">
+            <span class="sub-heading">Visual Memories</span>
+            <h2 class="hindi-font">दिव्य झलकियां</h2>
         </div>
         <div class="gallery-grid">
-            <div class="gallery-item" data-aos="zoom-in" onclick="openLightbox(this)">
-                <img src="https://res.cloudinary.com/dc6h0eown/image/upload/v1770789970/WhatsApp_Image_2026-02-09_at_4.21.17_PM_4_ernemv.jpg" alt="Katha">
-                <div class="gallery-overlay"><i class="fas fa-expand-alt"></i></div>
-            </div>
-            <div class="gallery-item" data-aos="zoom-in" onclick="openLightbox(this)">
-                <img src="https://res.cloudinary.com/dc6h0eown/image/upload/v1770789971/WhatsApp_Image_2026-02-09_at_4.21.17_PM_1_jkahcg.jpg" alt="Aarti">
-                <div class="gallery-overlay"><i class="fas fa-expand-alt"></i></div>
-            </div>
-            <div class="gallery-item" data-aos="zoom-in" onclick="openLightbox(this)">
-                <img src="https://res.cloudinary.com/dc6h0eown/image/upload/v1770789971/WhatsApp_Image_2026-02-09_at_4.21.17_PM_2_nfqpth.jpg" alt="Vrindavan">
-                <div class="gallery-overlay"><i class="fas fa-expand-alt"></i></div>
-            </div>
-            <div class="gallery-item" data-aos="zoom-in" onclick="openLightbox(this)">
-                <img src="https://res.cloudinary.com/dc6h0eown/image/upload/v1770789971/WhatsApp_Image_2026-02-09_at_4.21.17_PM_krvap5.jpg" alt="Bhajan">
-                <div class="gallery-overlay"><i class="fas fa-expand-alt"></i></div>
-            </div>
-            <div class="gallery-item" data-aos="zoom-in" onclick="openLightbox(this)">
-                <img src="https://res.cloudinary.com/dc6h0eown/image/upload/v1770789970/WhatsApp_Image_2026-02-09_at_4.20.16_PM_kutr7m.jpg" alt="Devotees">
-                <div class="gallery-overlay"><i class="fas fa-expand-alt"></i></div>
-            </div>
-            <div class="gallery-item" data-aos="zoom-in" onclick="openLightbox(this)">
-                <img src="https://res.cloudinary.com/dc6h0eown/image/upload/v1770789970/WhatsApp_Image_2026-02-09_at_4.20.16_PM_1_wvuyk1.jpg" alt="Radha Krishna">
-                <div class="gallery-overlay"><i class="fas fa-expand-alt"></i></div>
-            </div>
-            <div class="gallery-item" data-aos="zoom-in" onclick="openLightbox(this)">
-                <img src="https://res.cloudinary.com/dc6h0eown/image/upload/v1770789970/WhatsApp_Image_2026-02-09_at_4.21.17_PM_3_sevzyw.jpg" alt="Puja">
-                <div class="gallery-overlay"><i class="fas fa-expand-alt"></i></div>
-            </div>
-            <div class="gallery-item" data-aos="zoom-in" onclick="openLightbox(this)">
-                <img src="https://res.cloudinary.com/dc6h0eown/image/upload/v1770789970/WhatsApp_Image_2026-02-09_at_4.20.16_PM_2_hoz93r.jpg" alt="Temple">
-                <div class="gallery-overlay"><i class="fas fa-expand-alt"></i></div>
-            </div>
+            <!-- Row 1 -->
+            <div class="gallery-item" data-aos="zoom-in" onclick="openLightbox(this)"><img src="https://res.cloudinary.com/dc6h0eown/image/upload/v1770789970/WhatsApp_Image_2026-02-09_at_4.21.17_PM_4_ernemv.jpg"><div class="gallery-overlay"><i class="fas fa-expand-alt"></i></div></div>
+            <div class="gallery-item" data-aos="zoom-in" onclick="openLightbox(this)"><img src="https://res.cloudinary.com/dc6h0eown/image/upload/v1770789971/WhatsApp_Image_2026-02-09_at_4.21.17_PM_1_jkahcg.jpg"><div class="gallery-overlay"><i class="fas fa-expand-alt"></i></div></div>
+            <div class="gallery-item" data-aos="zoom-in" onclick="openLightbox(this)"><img src="https://res.cloudinary.com/dc6h0eown/image/upload/v1770789971/WhatsApp_Image_2026-02-09_at_4.21.17_PM_2_nfqpth.jpg"><div class="gallery-overlay"><i class="fas fa-expand-alt"></i></div></div>
+            <div class="gallery-item" data-aos="zoom-in" onclick="openLightbox(this)"><img src="https://res.cloudinary.com/dc6h0eown/image/upload/v1770789971/WhatsApp_Image_2026-02-09_at_4.21.17_PM_krvap5.jpg"><div class="gallery-overlay"><i class="fas fa-expand-alt"></i></div></div>
+            <!-- Row 2 -->
+            <div class="gallery-item" data-aos="zoom-in" onclick="openLightbox(this)"><img src="https://res.cloudinary.com/dc6h0eown/image/upload/v1770789970/WhatsApp_Image_2026-02-09_at_4.20.16_PM_kutr7m.jpg"><div class="gallery-overlay"><i class="fas fa-expand-alt"></i></div></div>
+            <div class="gallery-item" data-aos="zoom-in" onclick="openLightbox(this)"><img src="https://res.cloudinary.com/dc6h0eown/image/upload/v1770789970/WhatsApp_Image_2026-02-09_at_4.20.16_PM_1_wvuyk1.jpg"><div class="gallery-overlay"><i class="fas fa-expand-alt"></i></div></div>
+            <div class="gallery-item" data-aos="zoom-in" onclick="openLightbox(this)"><img src="https://res.cloudinary.com/dc6h0eown/image/upload/v1770789970/WhatsApp_Image_2026-02-09_at_4.21.17_PM_3_sevzyw.jpg"><div class="gallery-overlay"><i class="fas fa-expand-alt"></i></div></div>
+            <div class="gallery-item" data-aos="zoom-in" onclick="openLightbox(this)"><img src="https://res.cloudinary.com/dc6h0eown/image/upload/v1770789970/WhatsApp_Image_2026-02-09_at_4.20.16_PM_2_hoz93r.jpg"><div class="gallery-overlay"><i class="fas fa-expand-alt"></i></div></div>
         </div>
     </section>
 
-    <div id="lightbox" onclick="closeLightbox()">
-        <span id="lightbox-close">&times;</span>
-        <img id="lightbox-img" src="">
-    </div>
-
-    <section id="contact" class="contact-section">
-        <div class="section-header" style="text-align: center; color: white;" data-aos="fade-down">
-            <span class="sub-heading" style="color: var(--gold);">Get in Touch</span>
-            <h2 style="color: white;">Book Your Katha</h2>
+    <!-- Video Section (3 Per Row) -->
+    <section id="videos">
+        <div style="text-align: center; margin-bottom: 50px;">
+            <span class="sub-heading">Watch Online</span>
+            <h2 class="hindi-font">लेटेस्ट सत्संग</h2>
         </div>
+        <div class="video-grid">
+            <div class="video-container" data-aos="fade-up"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ"></iframe></div>
+            <div class="video-container" data-aos="fade-up" data-aos-delay="100"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ"></iframe></div>
+            <div class="video-container" data-aos="fade-up" data-aos-delay="200"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ"></iframe></div>
+        </div>
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="https://youtube.com" target="_blank" class="btn-gold" style="background: #FF0000; box-shadow: none;"><i class="fab fa-youtube"></i> View All Videos</a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" style="background: var(--deep-maroon);">
         <div class="contact-container" data-aos="fade-up">
-            <div class="contact-left">
-                <h3 class="hindi-font">संपर्क सूत्र</h3>
-                <p style="margin-bottom: 30px; opacity: 0.9;">For Katha organization, Satsang, or any spiritual guidance, please contact us.</p>
-                <div class="info-item"><i class="fas fa-phone-alt"></i><div><h4>Call Us</h4><p>+91 98765 43210</p></div></div>
-                <div class="info-item"><i class="fas fa-envelope"></i><div><h4>Email Us</h4><p>contact@amitkrishnashastri.com</p></div></div>
-                <div class="info-item"><i class="fas fa-map-marker-alt"></i><div><h4>Location</h4><p>Shri Dham Vrindavan, Mathura,<br>Uttar Pradesh, India</p></div></div>
+            <div class="contact-info">
+                <h2 style="color: var(--gold);">Book a Katha</h2>
+                <p style="margin-bottom: 30px; opacity: 0.8;">For organizing Shrimad Bhagwat Katha or any spiritual event, please reach out to us.</p>
+                <div style="margin-bottom: 20px;"><i class="fas fa-phone-alt" style="margin-right: 15px; color: var(--gold);"></i> +91 98765 43210</div>
+                <div style="margin-bottom: 20px;"><i class="fas fa-envelope" style="margin-right: 15px; color: var(--gold);"></i> shastriji@example.com</div>
+                <div style="margin-bottom: 20px;"><i class="fas fa-map-marker-alt" style="margin-right: 15px; color: var(--gold);"></i> Shri Dham Vrindavan, Mathura</div>
+                <div style="margin-top: 40px;">
+                    <p>Follow Us:</p>
+                    <div style="display: flex; gap: 15px; margin-top: 15px;">
+                        <a href="#" style="color: white; font-size: 1.5rem;"><i class="fab fa-facebook"></i></a>
+                        <a href="#" style="color: white; font-size: 1.5rem;"><i class="fab fa-instagram"></i></a>
+                        <a href="#" style="color: white; font-size: 1.5rem;"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
             </div>
-            <div class="contact-right">
-                <h3 style="margin-bottom: 25px;">Enquiry Form</h3>
-                <form onsubmit="sendToWhatsApp(event)">
-                    <div class="form-group"><label class="form-label">Full Name</label><input type="text" class="form-input" id="name" placeholder="Enter your name" required></div>
-                    <div class="form-group"><label class="form-label">Phone Number</label><input type="tel" class="form-input" id="phone" placeholder="Enter mobile number" required></div>
-                    <div class="form-group"><label class="form-label">Type of Program</label><select class="form-input" id="kathaType"><option value="Bhagwat Katha">Shrimad Bhagwat Katha</option><option value="Ram Katha">Ram Katha</option><option value="Shiv Puran">Shiv Mahapuran</option><option value="Nani Bai Mayra">Nani Bai Ka Mayra</option></select></div>
-                    <div class="form-group"><label class="form-label">City / Location</label><input type="text" class="form-input" id="city" placeholder="Where is the event?" required></div>
-                    <div class="form-group"><label class="form-label">Message</label><textarea class="form-input" id="message" rows="3" placeholder="Any specific details?"></textarea></div>
-                    <button type="submit" class="btn-gold" style="width: 100%;">Send Enquiry <i class="fab fa-whatsapp" style="margin-left:5px;"></i></button>
+            <div class="contact-form">
+                <h3 style="margin-bottom: 25px;">Katha Inquiry Form</h3>
+                <form id="kathaForm" onsubmit="sendWhatsApp(event)">
+                    <input type="text" id="name" placeholder="Full Name" class="form-input" required>
+                    <input type="tel" id="phone" placeholder="Mobile Number" class="form-input" required>
+                    <input type="text" id="city" placeholder="City / Event Location" class="form-input" required>
+                    <select id="kathaType" class="form-input">
+                        <option value="Bhagwat Katha">Shrimad Bhagwat Katha</option>
+                        <option value="Ram Katha">Ram Katha</option>
+                        <option value="Shiv Puran">Shiv Mahapuran</option>
+                    </select>
+                    <textarea id="msg" placeholder="Your Message" rows="4" class="form-input"></textarea>
+                    <button type="submit" class="btn-gold" style="width: 100%;">Send Request <i class="fab fa-whatsapp"></i></button>
                 </form>
             </div>
         </div>
     </section>
 
+    <!-- Footer -->
     <footer>
-        <div class="footer-logo">Shri Amit Krishna Shastri Ji</div>
-        <p>Spreading the divine wisdom of Sanatan Dharma.</p>
-        <div class="social-row">
-            <a href="#" class="social-btn"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="social-btn"><i class="fab fa-youtube"></i></a>
+        <a href="#" class="footer-logo hindi-font">श्री अमित कृष्ण शास्त्री जी</a>
+        <p>Spreading Peace and Devotion from the holy land of Braj.</p>
+        <div style="margin: 30px 0; font-size: 0.9rem;">
+            <a href="#home" style="color: #777; text-decoration: none; margin: 0 10px;">Home</a> |
+            <a href="#about" style="color: #777; text-decoration: none; margin: 0 10px;">About</a> |
+            <a href="#gallery" style="color: #777; text-decoration: none; margin: 0 10px;">Gallery</a> |
+            <a href="#contact" style="color: #777; text-decoration: none; margin: 0 10px;">Contact</a>
         </div>
         <p>&copy; 2024 Shri Amit Krishna Shastri Ji. All Rights Reserved.</p>
     </footer>
 
-    <a href="https://wa.me/919876543210" class="whatsapp-float" target="_blank" title="Chat on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+    <!-- Lightbox -->
+    <div id="lightbox" onclick="closeLightbox()">
+        <span class="close-lightbox">&times;</span>
+        <img id="lightbox-img" src="">
+    </div>
 
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/919876543210" class="wa-float" target="_blank" title="Chat on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+
+    <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ offset: 80, duration: 800, easing: 'ease-in-out', once: true });
-        function loaderOff() { const preloader = document.getElementById('preloader'); preloader.style.opacity = '0'; setTimeout(() => { preloader.style.display = 'none'; }, 500); }
-        window.addEventListener('scroll', function() { const nav = document.getElementById('navbar'); if (window.scrollY > 50) nav.classList.add('scrolled'); else nav.classList.remove('scrolled'); });
-        const navLinks = document.getElementById('navLinks'); const hamburger = document.querySelector('.hamburger');
-        function toggleMenu() { navLinks.classList.toggle('active'); hamburger.innerHTML = navLinks.classList.contains('active') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>'; }
-        function closeMenu() { navLinks.classList.remove('active'); hamburger.innerHTML = '<i class="fas fa-bars"></i>'; }
-        function sendToWhatsApp(e) { e.preventDefault(); const name = document.getElementById("name").value.trim(); const phone = document.getElementById("phone").value.trim(); const type = document.getElementById("kathaType").value; const city = document.getElementById("city").value.trim(); const msg = document.getElementById("message").value.trim(); if(name === "" || phone === "" || city === "") { alert("Please fill in all required fields."); return; } const phoneNumber = "919876543210"; const text = `*New Katha Enquiry* %0a%0a*Name:* ${name}%0a*Phone:* ${phone}%0a*Type:* ${type}%0a*City:* ${city}%0a*Message:* ${msg}`; window.open(`https://wa.me/${phoneNumber}?text=${text}`, '_blank'); }
-        const counters = document.querySelectorAll('.stat-number'); counters.forEach(counter => { const updateCount = () => { const target = +counter.getAttribute('data-target'); const count = +counter.innerText; const inc = target / 100; if (count < target) { counter.innerText = Math.ceil(count + inc); setTimeout(updateCount, 25); } else { counter.innerText = target + "+"; } }; let observer = new IntersectionObserver((entries) => { if(entries[0].isIntersecting) updateCount(); }); observer.observe(counter); });
-        const lightbox = document.getElementById('lightbox'); const lightboxImg = document.getElementById('lightbox-img');
-        function openLightbox(element) { const imgUrl = element.querySelector('img').src; lightboxImg.src = imgUrl; lightbox.style.display = 'flex'; document.body.style.overflow = 'hidden'; }
-        function closeLightbox() { lightbox.style.display = 'none'; document.body.style.overflow = 'auto'; }
+        AOS.init({ duration: 1000, once: true });
+
+        function loaderOff() { document.getElementById('preloader').style.display = 'none'; }
+
+        // Navbar Scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 100) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
+        });
+
+        // Counters
+        const counters = document.querySelectorAll('.stat-val');
+        counters.forEach(counter => {
+            const updateCount = () => {
+                const target = +counter.getAttribute('data-target');
+                const count = +counter.innerText;
+                const inc = target / 100;
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + inc);
+                    setTimeout(updateCount, 25);
+                } else {
+                    counter.innerText = target + "+";
+                }
+            };
+            new IntersectionObserver((entries) => {
+                if(entries[0].isIntersecting) updateCount();
+            }).observe(counter);
+        });
+
+        // Lightbox
+        function openLightbox(el) {
+            document.getElementById('lightbox-img').src = el.querySelector('img').src;
+            document.getElementById('lightbox').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // WhatsApp Form
+        function sendWhatsApp(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const city = document.getElementById('city').value;
+            const type = document.getElementById('kathaType').value;
+            const msg = document.getElementById('msg').value;
+            const text = `*Katha Inquiry*%0A*Name:* ${name}%0A*Phone:* ${phone}%0A*City:* ${city}%0A*Katha:* ${type}%0A*Message:* ${msg}`;
+            window.open(`https://wa.me/919876543210?text=${text}`, '_blank');
+        }
     </script>
 </body>
 </html>
