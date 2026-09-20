@@ -18,8 +18,8 @@
     <!-- External CSS -->
     <link rel="stylesheet" href="style.css">
 
-    <!-- Google reCAPTCHA v3 API (Updated with your Site Key) -->
-    <script src="https://www.google.com/recaptcha/api.js?render=6LdlpcUtAAAAAHeiA85uk6Co_llwlF27dJDqsW0L"></script>
+    <!-- Google reCAPTCHA ENTERPRISE API (Updated to match your specific key) -->
+    <script src="https://www.google.com/recaptcha/enterprise.js?render=6LdlpcUtAAAAAHeiA85uk6Co_llwlF27dJDqsW0L"></script>
 </head>
 <body onload="loaderOff()">
 
@@ -215,7 +215,7 @@
                     
                     <textarea name="Message" placeholder="Your Message" rows="4" class="form-input" required></textarea>
                     
-                    <!-- Hidden field to hold the v3 token -->
+                    <!-- Hidden field to hold the token -->
                     <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
 
                     <button type="submit" class="btn-gold submit-btn" id="submitBtn">
@@ -330,23 +330,31 @@
             document.body.style.overflow = 'auto';
         }
 
-        // --- NEW: reCAPTCHA v3 & Formspree Submit Logic ---
+        // --- UPDATED: Google Enterprise reCAPTCHA & Formspree Submit Logic ---
         document.getElementById('kathaForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Stop the form from submitting immediately
+            event.preventDefault(); // Prevent standard submission immediately
             
             const form = this;
             const submitBtn = document.getElementById('submitBtn');
+            
+            // Show loading state
             submitBtn.innerHTML = 'Sending... <i class="fas fa-spinner fa-spin" style="margin-left: 8px;"></i>';
             submitBtn.disabled = true;
 
-            // Execute reCAPTCHA v3
-            grecaptcha.ready(function() {
-                grecaptcha.execute('6LdlpcUtAAAAAHeiA85uk6Co_llwlF27dJDqsW0L', {action: 'submit'}).then(function(token) {
-                    // Put the token into the hidden input
+            // Execute Enterprise reCAPTCHA
+            grecaptcha.enterprise.ready(function() {
+                grecaptcha.enterprise.execute('6LdlpcUtAAAAAHeiA85uk6Co_llwlF27dJDqsW0L', {action: 'submit'}).then(function(token) {
+                    // Put the invisible token into the hidden input field
                     document.getElementById('g-recaptcha-response').value = token;
                     
-                    // Now actually submit the form
+                    // Now safely submit the form to Formspree
                     form.submit();
+                }).catch(function(error) {
+                    console.error("reCAPTCHA Error:", error);
+                    alert("Security check failed. Please refresh the page and try again.");
+                    // Reset Button
+                    submitBtn.innerHTML = 'Send Request <i class="fas fa-paper-plane" style="margin-left: 8px;"></i>';
+                    submitBtn.disabled = false;
                 });
             });
         });
