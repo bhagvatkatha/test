@@ -18,7 +18,7 @@
     <!-- External CSS -->
     <link rel="stylesheet" href="style.css">
 
-    <!-- Standard Google reCAPTCHA v2 Script -->
+    <!-- Google reCAPTCHA -->
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body onload="loaderOff()">
@@ -102,7 +102,7 @@
         <div class="mandala-bg"></div>
         <div class="quote-box" data-aos="zoom-in">
             <i class="fas fa-quote-left" style="font-size: 3.5rem; color: var(--gold); opacity: 0.3; margin-bottom: 25px;"></i>
-            <p class="quote-text hindi-font">"कथा केवल सुनने के लिए नहीं, बल्कि जीवन में उतारने के लिए है। जब तक भगवान की कथा हमारे आचरण में नहीं आती, तब तक भक्ति का मार्ग पूर्ण नहीं होता।"</p>
+            <p class="quote-text hindi-font">"कथा केवल सुनने के लिए नहीं, बल्कि जीवन में उतारने के लिए है। जब तक भगवान की कथा हमारे आचरण में नहीं आती, तब तक भक्ति का मार्ग पूर्ण full नहीं होता।"</p>
             <p style="margin-top: 30px; font-weight: 700; color: var(--primary); letter-spacing: 1px;">— पूज्य महाराज जी</p>
         </div>
     </section>
@@ -139,10 +139,12 @@
             <h2 class="hindi-font">दिव्य झलकियां</h2>
         </div>
         <div class="gallery-grid">
+            <!-- Row 1 -->
             <div class="gallery-item" data-aos="zoom-in" onclick="openLightbox(this)"><img src="https://res.cloudinary.com/dc6h0eown/image/upload/v1770789970/WhatsApp_Image_2026-02-09_at_4.21.17_PM_4_ernemv.jpg" loading="lazy"><div class="gallery-overlay"><i class="fas fa-expand-alt"></i></div></div>
             <div class="gallery-item" data-aos="zoom-in" onclick="openLightbox(this)"><img src="https://res.cloudinary.com/dc6h0eown/image/upload/v1770789971/WhatsApp_Image_2026-02-09_at_4.21.17_PM_1_jkahcg.jpg" loading="lazy"><div class="gallery-overlay"><i class="fas fa-expand-alt"></i></div></div>
             <div class="gallery-item" data-aos="zoom-in" onclick="openLightbox(this)"><img src="https://res.cloudinary.com/dc6h0eown/image/upload/v1770789971/WhatsApp_Image_2026-02-09_at_4.21.17_PM_2_nfqpth.jpg" loading="lazy"><div class="gallery-overlay"><i class="fas fa-expand-alt"></i></div></div>
             <div class="gallery-item" data-aos="zoom-in" onclick="openLightbox(this)"><img src="https://res.cloudinary.com/dc6h0eown/image/upload/v1770789971/WhatsApp_Image_2026-02-09_at_4.21.17_PM_krvap5.jpg" loading="lazy"><div class="gallery-overlay"><i class="fas fa-expand-alt"></i></div></div>
+            <!-- Row 2 -->
             <div class="gallery-item" data-aos="zoom-in" onclick="openLightbox(this)"><img src="https://res.cloudinary.com/dc6h0eown/image/upload/v1770789970/WhatsApp_Image_2026-02-09_at_4.20.16_PM_kutr7m.jpg" loading="lazy"><div class="gallery-overlay"><i class="fas fa-expand-alt"></i></div></div>
             <div class="gallery-item" data-aos="zoom-in" onclick="openLightbox(this)"><img src="https://res.cloudinary.com/dc6h0eown/image/upload/v1770789970/WhatsApp_Image_2026-02-09_at_4.20.16_PM_1_wvuyk1.jpg" loading="lazy"><div class="gallery-overlay"><i class="fas fa-expand-alt"></i></div></div>
             <div class="gallery-item" data-aos="zoom-in" onclick="openLightbox(this)"><img src="https://res.cloudinary.com/dc6h0eown/image/upload/v1770789970/WhatsApp_Image_2026-02-09_at_4.21.17_PM_3_sevzyw.jpg" loading="lazy"><div class="gallery-overlay"><i class="fas fa-expand-alt"></i></div></div>
@@ -213,10 +215,9 @@
                     
                     <textarea name="Message" placeholder="Your Message" rows="4" class="form-input" required></textarea>
                     
-                    <!-- Standard Google reCAPTCHA v2 Widget -->
-                    <!-- Replace YOUR_NEW_V2_SITE_KEY_HERE with the key generated from the legacy URL -->
+                    <!-- Google reCAPTCHA Widget (Updated with your Site Key) -->
                     <div class="recaptcha-wrapper">
-                        <div class="g-recaptcha" data-sitekey="YOUR_NEW_V2_SITE_KEY_HERE"></div>
+                        <div class="g-recaptcha" data-sitekey="6Lc0qcUtAAAAAAkaJU4A2siLzCmYS-LbiBVvHEpJ"></div>
                     </div>
 
                     <button type="submit" class="btn-gold submit-btn">
@@ -238,6 +239,7 @@
             <a href="#contact">Contact</a>
         </div>
         
+        <!-- Copyright & Designer Credit -->
         <p class="copyright">
             &copy; 2026 Shri Amit Krishna Shastri Ji. All Rights Reserved. <br>
             <span style="display: inline-block; margin-top: 10px; font-size: 0.8rem; color: #555;">
@@ -260,14 +262,17 @@
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
+        // Initialize AOS Animations
         AOS.init({ duration: 1000, once: true, offset: 50 });
 
+        // Preloader Logic
         function loaderOff() { 
             const preloader = document.getElementById('preloader');
             preloader.style.opacity = '0';
             setTimeout(() => { preloader.style.display = 'none'; }, 500);
         }
 
+        // Mobile Menu Logic
         const navLinks = document.getElementById('navLinks');
         const hamburgerIcon = document.querySelector('.hamburger i');
         
@@ -288,12 +293,14 @@
             hamburgerIcon.classList.add('fa-bars');
         }
 
+        // Navbar Scroll Effect
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('navbar');
             if (window.scrollY > 80) nav.classList.add('scrolled');
             else nav.classList.remove('scrolled');
         });
 
+        // Statistics Counters
         const counters = document.querySelectorAll('.stat-val');
         counters.forEach(counter => {
             const updateCount = () => {
@@ -312,6 +319,7 @@
             }).observe(counter);
         });
 
+        // Lightbox Logic
         function openLightbox(el) {
             document.getElementById('lightbox-img').src = el.querySelector('img').src;
             const lightbox = document.getElementById('lightbox');
@@ -324,8 +332,11 @@
             document.body.style.overflow = 'auto';
         }
 
+        // Form Validation (reCAPTCHA check before Formspree submission)
         document.getElementById('kathaForm').addEventListener('submit', function(event) {
             var recaptchaResponse = grecaptcha.getResponse();
+            
+            // If the captcha is not completed, stop the form from submitting
             if(recaptchaResponse.length === 0) {
                 event.preventDefault();
                 alert("Please verify that you are not a robot by checking the reCAPTCHA box.");
