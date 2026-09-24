@@ -20,8 +20,55 @@
 
     <!-- FIXED: Google reCAPTCHA v2 API Script -->
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <style>
+        /* Performance: keep the initial page light and load YouTube only when requested */
+        .lite-youtube {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            background: #111;
+            aspect-ratio: 16 / 9;
+        }
+        .lite-youtube img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            transition: transform .25s ease;
+        }
+        .lite-youtube:hover img {
+            transform: scale(1.02);
+        }
+        .video-play {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 68px;
+            height: 48px;
+            border: 0;
+            border-radius: 12px;
+            background: rgba(255, 0, 0, .92);
+            color: #fff;
+            font-size: 20px;
+            cursor: pointer;
+            display: grid;
+            place-items: center;
+            box-shadow: 0 4px 18px rgba(0,0,0,.3);
+        }
+        .video-play i { margin-left: 3px; }
+        .lite-youtube iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: block;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .lite-youtube img { transition: none; }
+        }
+    </style>
 </head>
-<body onload="loaderOff()">
+<body>
 
     <!-- Preloader -->
     <div id="preloader">
@@ -157,12 +204,21 @@
             <h2 class="hindi-font">लेटेस्ट सत्संग</h2>
         </div>
         <div class="video-grid">
-            <div class="video-container" data-aos="fade-up"><iframe width="560" height="315" src="https://www.youtube.com/embed/THcXOkrjOEw?si=XnZNwr2-MoyWFfd1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
-            <div class="video-container" data-aos="fade-up" data-aos-delay="100"><iframe width="560" height="315" src="https://www.youtube.com/embed/qkCsbWZq8JI?si=gMkgPQJ02uG2P3ee" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
-            <div class="video-container" data-aos="fade-up" data-aos-delay="200"><iframe width="560" height="315" src="https://www.youtube.com/embed/Y_bGZ9Qm9CA?si=10-n0u-kon7ATzgq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+            <div class="video-container lite-youtube" data-video-id="THcXOkrjOEw" data-aos="fade-up" role="button" tabindex="0" aria-label="Play Satsang video">
+                <img src="https://i.ytimg.com/vi/THcXOkrjOEw/hqdefault.jpg" alt="Satsang Video 1" loading="lazy" decoding="async">
+                <button class="video-play" aria-label="Play video"><i class="fas fa-play"></i></button>
+            </div>
+            <div class="video-container lite-youtube" data-video-id="qkCsbWZq8JI" data-aos="fade-up" data-aos-delay="100" role="button" tabindex="0" aria-label="Play Satsang video">
+                <img src="https://i.ytimg.com/vi/qkCsbWZq8JI/hqdefault.jpg" alt="Satsang Video 2" loading="lazy" decoding="async">
+                <button class="video-play" aria-label="Play video"><i class="fas fa-play"></i></button>
+            </div>
+            <div class="video-container lite-youtube" data-video-id="Y_bGZ9Qm9CA" data-aos="fade-up" data-aos-delay="200" role="button" tabindex="0" aria-label="Play Satsang video">
+                <img src="https://i.ytimg.com/vi/Y_bGZ9Qm9CA/hqdefault.jpg" alt="Satsang Video 3" loading="lazy" decoding="async">
+                <button class="video-play" aria-label="Play video"><i class="fas fa-play"></i></button>
+            </div>
         </div>
         <div class="text-center" style="margin-top: 45px;">
-            <a href="https://www.youtube.com/@ShriAmitKrishnaShastriJii/featured" target="_blank" class="btn-gold yt-btn">
+            <a href="https://www.youtube.com/@ShriAmitKrishnaShastriJii/featured" target="_blank" rel="noopener noreferrer" class="btn-gold yt-btn">
                 <i class="fab fa-youtube"></i> View All Videos
             </a>
         </div>
@@ -260,12 +316,35 @@
         // Initialize AOS Animations
         AOS.init({ duration: 1000, once: true, offset: 50 });
 
-        // Preloader Logic
-        function loaderOff() { 
+        // Fast preloader: do not wait for every image, font, CAPTCHA or video thumbnail.
+        function loaderOff() {
             const preloader = document.getElementById('preloader');
+            if (!preloader) return;
             preloader.style.opacity = '0';
-            setTimeout(() => { preloader.style.display = 'none'; }, 500);
+            setTimeout(() => { preloader.style.display = 'none'; }, 300);
         }
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => setTimeout(loaderOff, 80), { once: true });
+        } else {
+            setTimeout(loaderOff, 80);
+        }
+
+        // Lightweight YouTube embeds: thumbnails load first; the heavy YouTube iframe loads only on click.
+        document.querySelectorAll('.lite-youtube').forEach(card => {
+            const loadVideo = () => {
+                if (card.dataset.loaded === 'true') return;
+                const id = card.dataset.videoId;
+                card.dataset.loaded = 'true';
+                card.innerHTML = `<iframe src="https://www.youtube.com/embed/${id}?autoplay=1&rel=0" title="YouTube video player" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
+            };
+            card.addEventListener('click', loadVideo);
+            card.addEventListener('keydown', event => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    loadVideo();
+                }
+            });
+        });
 
         // Mobile Menu Logic
         const navLinks = document.getElementById('navLinks');
