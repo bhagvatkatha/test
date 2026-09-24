@@ -67,6 +67,53 @@
             .lite-youtube img { transition: none; }
         }
     </style>
+
+<style>
+.video-placeholder {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    cursor: pointer;
+    background: #111;
+}
+.video-placeholder img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.video-play {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 68px;
+    height: 48px;
+    border-radius: 12px;
+    background: #ff0000;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    transition: transform .2s ease, opacity .2s ease;
+}
+.video-placeholder:hover .video-play {
+    transform: translate(-50%, -50%) scale(1.08);
+}
+.video-placeholder:focus-visible {
+    outline: 3px solid #d4af37;
+    outline-offset: 2px;
+}
+.video-container iframe {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: 0;
+    display: block;
+}
+</style>
+
 </head>
 <body>
 
@@ -204,17 +251,23 @@
             <h2 class="hindi-font">लेटेस्ट सत्संग</h2>
         </div>
         <div class="video-grid">
-            <div class="video-container lite-youtube" data-video-id="THcXOkrjOEw" data-aos="fade-up" role="button" tabindex="0" aria-label="Play Satsang video">
-                <img src="https://i.ytimg.com/vi/THcXOkrjOEw/hqdefault.jpg" alt="Satsang Video 1" loading="lazy" decoding="async">
-                <button class="video-play" aria-label="Play video"><i class="fas fa-play"></i></button>
+            <div class="video-container" data-aos="fade-up">
+                <div class="video-placeholder" data-video-id="THcXOkrjOEw" role="button" tabindex="0" aria-label="Play video">
+                    <img src="https://i.ytimg.com/vi/THcXOkrjOEw/hqdefault.jpg" alt="Shri Amit Krishna Shastri Ji video" loading="lazy" decoding="async">
+                    <div class="video-play"><i class="fab fa-youtube"></i></div>
+                </div>
             </div>
-            <div class="video-container lite-youtube" data-video-id="qkCsbWZq8JI" data-aos="fade-up" data-aos-delay="100" role="button" tabindex="0" aria-label="Play Satsang video">
-                <img src="https://i.ytimg.com/vi/qkCsbWZq8JI/hqdefault.jpg" alt="Satsang Video 2" loading="lazy" decoding="async">
-                <button class="video-play" aria-label="Play video"><i class="fas fa-play"></i></button>
+            <div class="video-container" data-aos="fade-up" data-aos-delay="100">
+                <div class="video-placeholder" data-video-id="qkCsbWZq8JI" role="button" tabindex="0" aria-label="Play video">
+                    <img src="https://i.ytimg.com/vi/qkCsbWZq8JI/hqdefault.jpg" alt="Shri Amit Krishna Shastri Ji video" loading="lazy" decoding="async">
+                    <div class="video-play"><i class="fab fa-youtube"></i></div>
+                </div>
             </div>
-            <div class="video-container lite-youtube" data-video-id="Y_bGZ9Qm9CA" data-aos="fade-up" data-aos-delay="200" role="button" tabindex="0" aria-label="Play Satsang video">
-                <img src="https://i.ytimg.com/vi/Y_bGZ9Qm9CA/hqdefault.jpg" alt="Satsang Video 3" loading="lazy" decoding="async">
-                <button class="video-play" aria-label="Play video"><i class="fas fa-play"></i></button>
+            <div class="video-container" data-aos="fade-up" data-aos-delay="200">
+                <div class="video-placeholder" data-video-id="Y_bGZ9Qm9CA" role="button" tabindex="0" aria-label="Play video">
+                    <img src="https://i.ytimg.com/vi/Y_bGZ9Qm9CA/hqdefault.jpg" alt="Shri Amit Krishna Shastri Ji video" loading="lazy" decoding="async">
+                    <div class="video-play"><i class="fab fa-youtube"></i></div>
+                </div>
             </div>
         </div>
         <div class="text-center" style="margin-top: 45px;">
@@ -428,6 +481,33 @@
 
             // Submit securely to formspree (Formspree auto-reads the v2 recaptcha input)
             form.submit();
+        });
+
+        // Fast YouTube loading: show thumbnail first, load iframe only after click.
+        document.querySelectorAll('.video-placeholder').forEach(function(video) {
+            function loadVideo() {
+                if (video.dataset.loaded === 'true') return;
+                video.dataset.loaded = 'true';
+
+                const id = video.getAttribute('data-video-id');
+                const iframe = document.createElement('iframe');
+                iframe.src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0';
+                iframe.title = 'YouTube video player';
+                iframe.loading = 'lazy';
+                iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+                iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+                iframe.allowFullscreen = true;
+
+                video.replaceWith(iframe);
+            }
+
+            video.addEventListener('click', loadVideo);
+            video.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    loadVideo();
+                }
+            });
         });
     </script>
 </body>
